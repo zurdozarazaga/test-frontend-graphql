@@ -8,12 +8,12 @@ import { setContext } from "@apollo/client/link/context";
 import { InMemoryCache } from '@apollo/client';
 
 const httpLink = createHttpLink({
-  uri: 'https://api.github.com/graphql',
+  uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
   
 });
 
 const authLink = setContext((_, {headers} ) => {
-  const token = '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';  
+  const token = process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN;  
   return {
     headers: {
       ...headers,
